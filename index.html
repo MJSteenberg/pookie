@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question for My Pookie 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="hearts-bg"></div>
+        
+        <!-- Page 1: The Question -->
+        <div class="page active" id="page1">
+            <div class="content">
+                <h1 class="title fancy-text">Would you like to go on a date with me, Pookie? 💕</h1>
+                <div class="video-placeholder">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=400&fit=crop" alt="Romantic couple" class="placeholder-img">
+                    <p class="video-note">🎬 Our favorite moments together</p>
+                </div>
+                <div class="button-group">
+                    <button class="choice-btn yes-btn" data-choice="yes" onclick="handleDateResponse('Yes of course')">
+                        Yes of course! 😍
+                    </button>
+                    <button class="choice-btn maybe-btn" data-choice="maybe" onclick="handleDateResponse('Let me check my schedule')">
+                        Let me check my schedule 📅
+                    </button>
+                    <button class="choice-btn custom-btn" data-choice="custom" onclick="handleDateResponse('Vat my in my hol')">
+                        Vat my in my hol 😘
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Thank You Meme -->
+        <div class="page" id="page2">
+            <div class="content">
+                <h1 class="title">Yay! You made my day! 🎉</h1>
+                <div class="meme-container">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnVtZGRpY3F2MWx1aHNlcWN2YWt6NnRmZ3ZhejJ2cXVvaTlzczVxYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26BRv0ThflsHCqDrG/giphy.gif" alt="Happy Dance" class="meme-img">
+                </div>
+                <button class="continue-btn" onclick="nextPage()">Continue to plan our date 💕</button>
+            </div>
+        </div>
+
+        <!-- Page 3: Food Selection -->
+        <div class="page" id="page3">
+            <div class="content">
+                <h1 class="title">What would you like to eat? 🍝</h1>
+                <p class="subtitle">Choose 2 options that sound delicious!</p>
+                <div class="options-grid food-grid">
+                    <div class="option-card" data-food="pasta">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=200&fit=crop" alt="Pasta">
+                        <p>Romantic Pasta 🍝</p>
+                    </div>
+                    <div class="option-card" data-food="sushi">
+                        <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300&h=200&fit=crop" alt="Sushi">
+                        <p>Fresh Sushi 🍣</p>
+                    </div>
+                    <div class="option-card" data-food="steak">
+                        <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=300&h=200&fit=crop" alt="Steak">
+                        <p>Juicy Steak 🥩</p>
+                    </div>
+                    <div class="option-card" data-food="pizza">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&h=200&fit=crop" alt="Pizza">
+                        <p>Cozy Pizza 🍕</p>
+                    </div>
+                    <div class="option-card" data-food="seafood">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=300&h=200&fit=crop" alt="Seafood">
+                        <p>Fresh Seafood 🦐</p>
+                    </div>
+                    <div class="option-card" data-food="mamcitas">
+                        <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=300&h=200&fit=crop" alt="Burritos">
+                        <p>Mamcitas Burritos 🌯</p>
+                    </div>
+                    <div class="option-card" data-food="shwarma">
+                        <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=300&h=200&fit=crop" alt="Shwarma">
+                        <p>Shwarma Express 🥙</p>
+                    </div>
+                    <div class="option-card" data-food="thai">
+                        <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=300&h=200&fit=crop" alt="Thai">
+                        <p>Thai Cuisine 🍜</p>
+                    </div>
+                </div>
+                <p class="selection-counter">Selected: <span id="food-count">0</span>/2</p>
+                <button class="continue-btn" onclick="nextPage()" disabled id="food-continue">Next: Drinks 🥂</button>
+            </div>
+        </div>
+
+        <!-- Page 4: Drink Selection -->
+        <div class="page" id="page4">
+            <div class="content">
+                <h1 class="title">What would you like to drink? 🍷</h1>
+                <p class="subtitle">Choose your perfect drink!</p>
+                <div class="options-grid drinks-grid">
+                    <div class="option-card single-select" data-drink="wine">
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=300&h=200&fit=crop" alt="Wine">
+                        <p>Fine Wine 🍷</p>
+                    </div>
+                    <div class="option-card single-select" data-drink="cocktails">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=300&h=200&fit=crop" alt="Cocktails">
+                        <p>Fancy Cocktails 🍹</p>
+                    </div>
+                    <div class="option-card single-select" data-drink="espresso-martini">
+                        <img src="https://images.unsplash.com/photo-1542849187-5ec6ea5e6a27?w=300&h=200&fit=crop" alt="Espresso Martini">
+                        <p>Espresso Martini ☕🍸</p>
+                    </div>
+                    <div class="option-card single-select" data-drink="champagne">
+                        <img src="https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?w=300&h=200&fit=crop" alt="Champagne">
+                        <p>Champagne 🥂</p>
+                    </div>
+                    <div class="option-card single-select" data-drink="gin-tonic">
+                        <img src="https://images.unsplash.com/photo-1606924842584-ffa79285b531?w=300&h=200&fit=crop" alt="Gin Tonic">
+                        <p>Gin & Tonic 🍸</p>
+                    </div>
+                    <div class="option-card single-select" data-drink="brandy-coke">
+                        <img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?w=300&h=200&fit=crop" alt="Brandy & Coke">
+                        <p>Brandy & Coke 🥃</p>
+                    </div>
+                </div>
+                <button class="continue-btn" onclick="nextPage()" disabled id="drink-continue">Next: Dessert 🍰</button>
+            </div>
+        </div>
+
+        <!-- Page 5: Dessert Selection -->
+        <div class="page" id="page5">
+            <div class="content">
+                <h1 class="title">Save room for dessert? 🍨</h1>
+                <p class="subtitle">Pick something sweet!</p>
+                <div class="options-grid dessert-grid">
+                    <div class="option-card single-select" data-dessert="favourite-ice-cream">
+                        <img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=300&h=200&fit=crop" alt="Ice Cream">
+                        <p>Favourite Ice Cream 🍦</p>
+                    </div>
+                    <div class="option-card single-select" data-dessert="mcflurry">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=300&h=200&fit=crop" alt="McFlurry">
+                        <p>McFlurry 🍨</p>
+                    </div>
+                    <div class="option-card single-select" data-dessert="malva-pudding">
+                        <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=300&h=200&fit=crop" alt="Malva Pudding">
+                        <p>Malva Pudding 🍮</p>
+                    </div>
+                    <div class="option-card single-select" data-dessert="chocolate-cake">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=200&fit=crop" alt="Chocolate Cake">
+                        <p>Chocolate Cake 🍫</p>
+                    </div>
+                    <div class="option-card single-select" data-dessert="cheesecake">
+                        <img src="https://images.unsplash.com/photo-1533134242066-d7911557a539?w=300&h=200&fit=crop" alt="Cheesecake">
+                        <p>Cheesecake 🍰</p>
+                    </div>
+                    <div class="option-card single-select" data-dessert="tiramisu">
+                        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=300&h=200&fit=crop" alt="Tiramisu">
+                        <p>Tiramisu ☕</p>
+                    </div>
+                </div>
+                <button class="continue-btn" onclick="nextPage()" disabled id="dessert-continue">Next: After dinner 🎬</button>
+            </div>
+        </div>
+
+        <!-- Page 6: Activity Selection -->
+        <div class="page" id="page6">
+            <div class="content">
+                <h1 class="title">What should we do afterwards? 🌟</h1>
+                <p class="subtitle">Let's make it a perfect evening!</p>
+                <div class="options-grid activity-grid">
+                    <div class="option-card single-select" data-activity="cinema">
+                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=300&h=200&fit=crop" alt="Cinema">
+                        <p>Movies in Cinema 🎬</p>
+                    </div>
+                    <div class="option-card single-select" data-activity="home-movies">
+                        <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=300&h=200&fit=crop" alt="Home Movies">
+                        <p>Netflix & Cuddles 🏠</p>
+                    </div>
+                    <div class="option-card single-select" data-activity="walk">
+                        <img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=300&h=200&fit=crop" alt="Walk">
+                        <p>Romantic Walk 🌙</p>
+                    </div>
+                    <div class="option-card single-select" data-activity="dancing">
+                        <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=300&h=200&fit=crop" alt="Dancing">
+                        <p>Dancing 💃</p>
+                    </div>
+                    <div class="option-card single-select" data-activity="stargazing">
+                        <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=300&h=200&fit=crop" alt="Stargazing">
+                        <p>Stargazing ⭐</p>
+                    </div>
+                    <div class="option-card single-select" data-activity="darts">
+                        <img src="https://images.unsplash.com/photo-1552954277-0c45e9f6b5eb?w=300&h=200&fit=crop" alt="Darts">
+                        <p>Darts at Happyfolks 🎯</p>
+                    </div>
+                </div>
+                <button class="continue-btn" onclick="submitAndFinish()" disabled id="activity-continue">Finish Planning 💕</button>
+            </div>
+        </div>
+
+        <!-- Page 7: Thank You -->
+        <div class="page" id="page7">
+            <div class="content final-page">
+                <h1 class="title fancy-text">Thank you for being the best, most beautiful bunda lady ever! 💕</h1>
+                <div class="final-message">
+                    <p class="love-note">Can't wait for our perfect date together!</p>
+                    <div class="heart-animation">
+                        <span class="heart">❤️</span>
+                        <span class="heart">💕</span>
+                        <span class="heart">💖</span>
+                        <span class="heart">💗</span>
+                        <span class="heart">💝</span>
+                    </div>
+                    <p class="signature">Love always,<br><span class="fancy-text">Your person</span></p>
+                </div>
+                <div class="flowers">
+                    🌹 🌸 🌺 🌻 🌷
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
